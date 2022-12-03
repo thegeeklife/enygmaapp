@@ -7,13 +7,13 @@ A theme that is common across real life cold cases and solving mysteries leisure
 
 # Use Cases
 The following are the main actions a user can take:
-•	Create an account or log in using their socials (Google and Facebook)
-•	Select a mystery to solve from the following categories: Horror, hardboiled (police investigation) and noir (private detective)
-•	Highlight sentences to identify clues
-•	Engage in discussions with other users
-•	Like/dislike a mystery and a comment
-•	Submit a comment
-•	Submit their own mysteries
+** Create an account or log in using their socials (Google and Facebook)
+**	Select a mystery to solve from the following categories: Horror, hardboiled (police investigation) and noir (private detective)
+**	Highlight sentences to identify clues
+**	Engage in discussions with other users
+**	Like/dislike a mystery and a comment
+**	Submit a comment
+** Submit their own mysteries
 
 
 # Hosted URL
