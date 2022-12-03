@@ -35,5 +35,5 @@ The following are the main actions a user can take:
 -	All the required files and folders are included, but in case the mystery title page does not look proper, please follow these steps:
 	Install fontawesome using the requirements.txt file and using terminal to run this command: 
 	- python -m pip install -r requirements.txt
-	- python manage.py collect static
+	- python manage.py collectstatic
 	- python manage.py migrate
