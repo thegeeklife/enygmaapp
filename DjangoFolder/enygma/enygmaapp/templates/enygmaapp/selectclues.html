@@ -1,0 +1,53 @@
+{% extends 'enygmaapp/createmystery.html' %}
+
+
+{% block menubar %}
+<!-- Nav bar for tabs -->
+	<div id="nav-bar-tabs">
+		<a href="{% url 'create_mystery' %}">Create Mystery</a>
+		<a href="{% url 'select_clues' %}" class="selected-menu">Select Clues</a>
+	</div>
+{% endblock %}
+
+		<!-- Top Navigation Bar -->
+		{% block content %}
+<!-- Content -->
+	<div class = "edit-page-content">
+		<div id="content-box-title">
+			<h2> Clues (Sentences) </h2>
+			<p>Highlight sentences that are clues.</p>
+		</div>
+		<div>
+			<div>
+				<!-- Align left -->
+				<!-- text for story that can be highlighted to show acquit/convict -->
+				{{story}}
+			</div>
+			<div>
+				<!-- Align right -->
+				{% for clue in totalclues %}
+				<div id="select">
+					Selected Clue
+					<select>
+						<option value="" disabled selected>Acquits/Convicts</option>
+						<option value="acquit">Acquits</option>
+						<option value="convict">Convicts</option>
+					</select>
+					Suspect Name
+					<select>
+						<option value="" disabled selected>Suspect Name</option>
+						<option value="suspect1">Suspect 1</option>
+						<option value="suspect2">Suspect 2</option>
+						<option value="suspect3">Suspect 3</option>
+					</select>
+				</div>
+				{% endfor %}
+
+			</div>
+			<p></p>
+			<a href="#" class="med-button">Submit</a>
+
+		</div>
+	</div>
+
+	{% endblock %}

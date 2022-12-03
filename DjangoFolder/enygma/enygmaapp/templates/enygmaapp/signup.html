@@ -1,0 +1,42 @@
+{% extends 'enygmaapp/base.html' %}
+{% block title %}Enygma: Login {% endblock %}
+
+
+  {% block navbar %}
+  <div class="top-nav">
+    <a href="{% url 'index' %}">Home</a>
+      <a href="{% url 'default' %}">Help Center</a>
+      <div id="top-nav-right">
+        <a href="{% url 'signin' %}">Log In</a>
+        <!-- <a href="{% url 'loginpage' %}">Sign Up</a> -->
+        <a href="{% url 'signup' %}" class="active"> Sign Up </a>
+      </div>
+  </div>
+  {% endblock %}
+
+
+	{% block content %}
+	<div class="main-content">
+	   <div class="right-div">
+		     {% if messages %}
+
+				          {% for message in messages %}
+					   <p id="account-message"> {{ message }} </p>
+					        {% endfor %}
+
+			   {% endif %}
+			   <form id="signup" method="post">
+				    {% csrf_token %}
+				    <legend> <h2> Create Account </h2> </legend>
+				    <table>
+					     {{form.as_table}}
+					     <tr>
+						      <td></td>
+						      <td><input type="submit" value="Create" class="med-button"></td>
+					     </tr>
+				    </table>
+			   </form>
+		  </div>
+	</div>
+
+{% endblock %}

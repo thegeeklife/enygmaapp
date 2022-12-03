@@ -1,0 +1,21 @@
+{% extends 'enygmaapp/base.html' %}
+
+{% block title %}404 Not found{% endblock %}
+
+<!-- Top Navigation Bar -->
+{% block navbar %}
+<div class="top-nav">
+	<a href="{% url 'index' %}" >Home</a>
+		<a href="{% url 'default' %}" id="active">Help Center</a>
+		<div id="top-nav-right">
+			<a href="{% url 'signin' %}">Log In</a>
+			<a href="{% url 'signup' %}">Sign Up</a>
+		</div>
+</div>
+{% endblock %}
+
+	<!-- Top Navigation Bar -->
+	{%block content%}
+	<h1>Error  404: Page Not Found</h1>
+	<h2>This may be due the site being under construction.</h2>
+{%endblock%}

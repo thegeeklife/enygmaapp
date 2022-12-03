@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  {% load static %}
+
+    <!-- Bootstrap CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+    <!--Font awesome icons -->
+	<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> -->
+  <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet", type="text/css", href="{% static 'enygmaapp/home.css' %}" >
+  <!-- <link rel="stylesheet", href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' %}"> -->
+
+
+	<title> {% block title %} Enygma: Solving Mysteries {% endblock %}</title>
+	<!-- <link rel= "stylesheet" type= "text/css" href= "styles/home.css"> -->
+</head>
+<body>
+	<!-- Top Navigation Bar -->
+	{% block navbar %}
+	<div class="top-nav">
+		<a href="{% url 'index' %}" id="active">Home</a>
+	    <a href="{% url 'default' %}">Help Center</a>
+	    <div id="top-nav-right">
+	    	<a href="{% url 'signin' %}">Log In</a>
+	    	<!-- <a href="{% url 'loginpage' %}">Sign Up</a> -->
+				<a href="{% url 'signup' %}"> Sign Up </a>
+	    </div>
+	</div>
+	{% endblock %}
+
+		{% block menubar %} {% endblock %}
+
+{% block content %}
+	<!-- Main content div -->
+	<div class="main-content">
+		<span id="log-out-msg"> </span>
+		<div class="title">
+				Enygma
+				<div id="subtitle"> {{subtitle}}</div>
+		</div>
+    {% for paragraph in description_paragraphs%}
+		<div class = "description">
+        {{paragraph}}
+		</div>
+    {% endfor %}
+
+
+		<a href="{% url 'signin' %}" class="big-button description">Solve a mystery!</a>
+
+
+	</div>
+
+  {% endblock %}
+	<!-- Footer div -->
+	{% block footer %}
+	<div id="footer">
+		Copyright 2021 All Rights Reserved
+        <div id="footer-menu">
+        	<a href="{% url 'default' %}">Pivacy Policy</a> |
+        	<a href="{% url 'default' %}">Terms</a> |
+        	<a href="{% url 'default' %}">FAQ</a>
+        </div>
+    </div>
+	{% endblock %}
+
+    <!-- <script type="text/javascript" src="script/script.js"></script> -->
+    <script src="{% static 'jquery/jquery-3.6.1.js' %}"> </script>
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		<!-- A plugin for password show/hide  -->
+	<script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+    <script src="{% static 'enygmaapp/script.js' %}"> </script>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends 'enygmaapp/items.html' %}
+
+{% block content %}
+
+<div class="story">
+  <h3> This definition is brought to you through urban dictionary API </h3>
+  <ul>
+    <li> Definition for {{search}} is : {{def}}</li>
+    <li> Author of definition: {{author}}</li>
+    <li> Example usage: {{sentence}} </li>
+    <li> Likes: {{thumbs_up}} | Dislikes : {{thumbs_down}}</li>
+    </ul>
+    <a href="{{ item.mysteryid }}">Back to mystery</a>
+</div>
+
+
+{% endblock %}

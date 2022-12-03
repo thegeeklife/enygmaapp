@@ -1,0 +1,124 @@
+{% extends 'enygmaapp/base.html'%}
+
+{% block title %}Engyma: Submit a Mystery {% endblock %}
+		<!-- Top Navigation Bar -->
+
+{% block navbar %}
+	<div class="top-nav">
+		<a href="{% url 'index' %}">Home</a>
+	    <a href="{% url 'default' %}">How It Works</a>
+	    <a href="{% url 'create_mystery' %}" id="active">Submit a Mystery</a>
+			<a href="{% url 'items' %}">Items</a>
+	    <div id="top-nav-right">
+	    	<a href="{% url 'my_profile' %}">My Profile</a>
+	    	<a href="{% url 'index' %}">Log Out</a>
+	    </div>
+	</div>
+{% endblock %}
+
+
+{% block menubar %}
+<!-- Nav bar for tabs -->
+	<div id="nav-bar-tabs">
+		<a href="{% url 'create_mystery' %}" class="selected-menu">Create Mystery</a>
+
+		<a href="{% url 'select_clues' %}">Select Clues</a>
+	</div>
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+	<div class = "edit-page-content">
+			<h3>Mystery Details</h3>
+		<form method="post">
+			{% csrf_token %}
+			<fieldset>
+
+			<legend><h3>Primary Information</h3></legend>
+
+			<P>
+				<select name="selected_genre">
+					<option value="" disabled selected>Select Genre</option>
+					<option value="horror">Horror</option>
+					<option value="hardboiled">Hardboiled</option>
+					<option value="noir">Noir</option>
+				</select>
+			</p>
+			<p>
+				<label > Total clues (between 3 and 5): </label>
+			</p>
+			<p>
+				<input type="number" name="totalclues" min="3" max="5">
+			</p>
+			<p> Type your mystery story </p>
+				<p>
+					<textarea id="story" name="story">
+					</textarea>
+				</p>
+				</fieldset>
+
+
+				<form method="post">
+					{% csrf_token %}
+					<fieldset>
+						<legend> <h3> Suspect and Motive </h3> </legend>
+
+						<div>
+				<!-- total sus div -->
+						<p>
+							<label> Total Potential Suspects (between 2 and 5): </label>
+							<input type="number" name="totalsuspects" min="2" max="5">
+						</p>
+					</div>
+					<div class="content-left">
+				<!-- left div -->
+						<p>Potential Suspect 1
+							<input type="text" name="sus1" placeholder="Potential Suspect 1 Name">
+						</p>
+						<p>Potential Suspect 2
+							<input type="text" name="sus2" placeholder="Potential Suspect 2 Name">
+						</p>
+						<p>Potential Suspect 3
+							<input type="text" name="sus3" placeholder="Potential Suspect 3 Name">
+						</p>
+						<p>Potential Suspect 4
+							<input type="text" name="sus4" placeholder="Potential Suspect 4 Name">
+						</p>
+
+					</div>
+						<div class="content-right">
+				<!-- right div -->
+						<p>Potential Motive for Suspect 1
+							<input type="text" name="mot1" placeholder="Potential Motive">
+						</p>
+						<p>Potential Motive for Suspect 2
+							<input type="text" name="mot2" placeholder="Potential Motive">
+						</p>
+						<p>Potential Motive for Suspect 3
+							<input type="text" name="mot3" placeholder="Potential Motive">
+						</p>
+						<p>Potential Motive for Suspect 4
+							<input type="text" name="mot4" placeholder="Potential Motive">
+						</p>
+					</div>
+					<div>
+				<!-- Select culprit -->
+						<p id="select-who-did-it">
+							Select who did it
+							<select name="selectedculprit">
+								<option value="" disabled selected>Select Culprit Name</option>
+								<option value="suspect1">Suspect1</option>
+								<option value="suspect2">Suspect2</option>
+								<option value="suspect3">Suspect3</option>
+								<option value="suspect4">Suspect4</option>
+							</select>
+						</p>
+					</div>
+			</fieldset>
+			<input type="submit" value="Next" class="med-button" name="create1">
+
+			</form>
+
+	</div>
+
+{% endblock %}

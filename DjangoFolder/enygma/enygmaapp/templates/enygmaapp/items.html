@@ -1,0 +1,96 @@
+{% extends "enygmaapp/base.html" %}
+
+{% block title %}Enygma {% endblock %}
+
+
+	<!-- Top Navigation Bar -->
+	{% block navbar %}
+	<div class="top-nav">
+		<a href="{% url 'index' %}">Home</a>
+	    <a href="{% url 'default' %}">How It Works</a>
+	    <a href="{% url 'create_mystery' %}">Submit a Mystery</a>
+			<a href="{% url 'items' %}" class="active">Items</a>
+	    <div id="top-nav-right">
+	    	<a href="{% url 'my_profile' %}">My Profile</a>
+	    	<a href="{% url 'index' %}">Log Out</a>
+	    </div>
+	</div>
+	{% endblock %}
+
+	{% block menubar %} {% endblock %}
+
+{% block content %}
+	<h1 class="title-items">Enygma</h1>
+
+	<!-- Div for the search bar and filter box -->
+	<div>
+		<input type="text" name="search-box" placeholder="Search genre, mystery name" class="search-filter">
+
+		<select name="filter-box" class="search-filter">
+			<option value="" disabled selected> Select Filter</option>
+				<optgroup label="Genre">
+					{% for genre in genres %}
+					<option value="genre">{{genre}}</option>
+					{% endfor %}
+				</optgroup>
+				<optgroup label="Difficulty">
+					{% for diff in difficulties %}
+					<option value="diff">{{diff}}</option>
+					{% endfor %}
+				</optgroup>
+				<option value="all"> All </option>
+		</select>
+	</div>
+
+	<!-- Container for main items-->
+	<div class="items-container">
+		<!-- Featured Items Category-->
+
+		<p>Featured</p>
+
+		<!-- Div for Items in Featured Catorgy -->
+		<div class="gallery-scroll">
+			{% for item in featured_list %}
+			<figure class="gallery-item">
+				<!-- All images are sourced form Pexels -->
+				<img src="{{item.img}}">
+				<figcaption><a href="{{ item.mysteryid }}">{{item.title}}</a></figcaption>
+			</figure>
+		{% endfor %}
+		</div>
+		<!-- Horror Category -->
+		<p>Horror</p>
+		<div class="gallery-scroll">
+			{% for item in horror_list%}
+			<figure class="gallery-item">
+				<img src="{{item.img}}">
+				<figcaption><a href="{% url 'items'  %}">{{item.title}} </a></figcaption>
+			</figure>
+			{% endfor %}
+		</div>
+		<!-- Hardboiled Category -->
+		<p>Hardboiled</p>
+		<div class="gallery-scroll">
+			{% for item in hardboiled_list%}
+			<figure class="gallery-item">
+				<img src="{{item.img}}">
+				<figcaption><a href="{% url 'items'  %}">{{item.title}}</a></figcaption>
+			</figure>
+			{% endfor %}
+		</div>
+		<!-- Noir Category -->
+		<p>Noir</p>
+		<div class="gallery-scroll">
+			{% for item in noir_list%}
+			<figure class="gallery-item">
+				<img src="{{item.img}}">
+				<figcaption><a href="{% url 'items'  %}">{{item.title}} </a></figcaption>
+			</figure>
+			{% endfor %}
+		</div>
+
+
+	</div>
+
+
+{% endblock %}

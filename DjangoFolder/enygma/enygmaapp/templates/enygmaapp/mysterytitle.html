@@ -1,0 +1,114 @@
+{% extends 'enygmaapp/items.html' %}
+
+
+{% block title %} Engyma: {{mystery_details.mystery_title}} {% endblock %}
+
+<!-- Mystery Title and other details -->
+{% block content %}
+	<div class="mystery-page-content">
+		<div class="mystery-title">
+			<h1> {{mystery_details.mystery_title}} </h1>
+		</div>
+
+ <!-- Quick display of properties -->
+		<div class="mystery-properties">
+			<div class="like-dislike">
+					<i class="like-button fa-solid fa-thumbs-up" id="like-button"> </i>
+					<div id="l-counter"> {{mystery_details.likes}}</div>
+					<i class="dislike-button fa-solid fa-thumbs-down" id="dislike-button"> </i>
+					<div id="d-counter"> {{mystery_details.dislikes}} </div>
+			</div>
+
+			<p class = "other-info">Genre: {{mystery_details.genre}}</p>
+			<p class="other-info">Difficuty: {{mystery_details.difficulty}}</p>
+			<p class="other-info">Solved:
+				<div class="w3-border">
+					<div class="w3-solved"> {{mystery_details.percentage_solved}}%
+					</div>
+				</div>
+
+		</div>
+		<form method = "post">
+			{% csrf_token %}
+
+			<label for="wordsearch"> Don't know what a word means? Try searching for it: </label>
+					<input type="text" name="wordsearch" placeholder="Search for a word here" >
+					<input type="submit" name="updateinfo" value="search" class="small-button">
+
+		</form>
+		<div class="story">
+			{% autoescape off %}
+			<p> {{mystery_details.storyparagraphs}}</p>
+			<!-- {% for paragraph in mystery_details.storyparagraphs %} -->
+			<!-- <p> {{paragraph}} </p> -->
+			<!-- {% endfor %} -->
+			{{mystery_details.story}}
+			{% endautoescape %}
+			{% load static %}
+			{% block ajaxblock %}
+			<script src="{% static 'jquery/jquery-3.6.1.js' %}"> </script>
+			<script src="{% static 'enygmaapp/ajax_demo.js' %}"> </script>
+			{% endblock %}
+			{% block test %}
+
+					<button id="ajax-btn">See More (Click this to Test Ajax)</button>
+					<div id="ajax-test"></div>
+
+				{% endblock %}
+
+		</div>
+
+
+
+		<div class="bottom">
+			<div class="content-left other-info">
+				<h3>Submit a Solution</h3>
+				<p>Clues Found
+					<input type="number" value="1"  disabled class="display-number">
+				of <input type="number" value="4"  disabled class="display-number">
+			</p>
+				<p>Suspect:
+					<select>
+
+						<option value="" disabled selected>Select Suspect</option>
+						{% for suspect in mystery_details.suspects %}
+						<option value="suspect">{{suspect}}</option>
+						{% endfor %}
+					</select>
+				</p>
+				<p>Motive:
+					<select>
+						<option value="" disabled selected>Select Motive</option>
+						{% for motive in mystery_details.motives %}
+						<option value="motive">{{motive}}</option>
+						{% endfor %}
+					</select>
+				</p>
+				<button class="mystery-submission" id="submit-button">Submit</button>
+			</div>
+
+			<div class="content-right other-info">
+
+				<form onsubmit="createcomment(this); return false;">
+					  <input type="text"  placeholder="Start a discussion" class="discussion-box" id="new-comment">
+					  <button class="mystery-submission" id="add-comment">Comment</button>
+				</form>
+
+				<h4>Top Discussions</h4>
+				<div class="comments">
+					{% for comments in mystery_details.discussions %}
+					<p>{{comments.user}} : {{comments.comment}}
+
+						<i class="like-button fa-solid fa-thumbs-down"> {{comments.commentdislikes}}</i><i class="like-button fa-solid fa-thumbs-up"> {{comments.commentlikes}} </i>
+						<p class="comment-replies">
+							{{comments.replies}}
+						</p>
+					{% endfor %}
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

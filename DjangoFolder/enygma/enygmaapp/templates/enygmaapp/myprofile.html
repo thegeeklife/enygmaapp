@@ -1,0 +1,31 @@
+{% extends 'enygmaapp/editprofile.html' %}
+
+{% block menubar %}
+	<!-- Nav bar for tabs -->
+	<div id="nav-bar-tabs">
+    <a href="{% url 'my_profile' %}" class="selected-menu">View Profile</a>
+		<a href="{% url 'edit_profile'%}" >Edit profile</a>
+	</div>
+{% endblock %}
+
+
+ {% block content %}
+	<div class="edit-page-content">
+    <form>
+      <fieldset>
+        <legend><h2>Account Information</h2></legend>
+				{% block user_status %}
+					{% if user.is_authenticated %}
+        		<p>Username: {{user.username}}</p>
+        		<p>First Name: {{user.first_name}}</p>
+        		<p>Last Name: {{user.last_name}}</p>
+        		<p>Email: {{user.email}}</p>
+					{% endif %}
+				{% endblock %}
+      </fieldset>
+    </form>
+		<a href="delete_user/{{user.username}}" onclick="return confirm('Are you sure you want to delete your account')"> Delete my Account </a>
+
+	</div>
+
+{% endblock %}
