@@ -17,13 +17,13 @@ The following are the main actions a user can take:
 
 
 # Functionalities Currently Offered
-- Sign up using the sign up link.
+- Sign up using the sign up link. (create)
 - Log in using the account created (Facebook & Google login do not work yet).
 - There is one mystery story, you can like/dislike it and post a comment.
 - You can search for a word while viewing the mystery (done using urbandictionary API).
-- You can update your profile information (username, first name, last name and email) under My Profile option.
-- You can also delete your profile.
-
+- You can update your profile information (username, first name, last name and email) under My Profile option. (update, retreive)
+- You can also delete your profile. (view)
+ 
 # Hosted URL
 - The hosted url is http://127.0.0.1:8000/enygmaapp
 - Libraries used include: 
@@ -34,5 +34,6 @@ The following are the main actions a user can take:
   - Errors handled using Stackoverflow.
 -	All the required files and folders are included, but in case the mystery title page does not look proper, please follow these steps:
 	Install fontawesome using the requirements.txt file and using terminal to run this command: 
-	python -m pip install -r requirements.txt
-	python manage.py collect static
+	- python -m pip install -r requirements.txt
+	- python manage.py collect static
+	- python manage.py migrate
