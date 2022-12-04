@@ -25,7 +25,7 @@ The following are the main actions a user can take:
 - You can also delete your profile. (view)
  
 # Hosted URL
-- The hosted url is http://127.0.0.1:8000/enygmaapp
+- The hosted url is http://127.0.0.1:8000/enygmaapp or https://subiaansari.pythonanywhere.com/enygmaapp
 - Libraries used include: 
   - jquery 3.6
   - fontawesomefree. 
