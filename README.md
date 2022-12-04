@@ -37,3 +37,6 @@ The following are the main actions a user can take:
 	- python -m pip install -r requirements.txt
 	- python manage.py collectstatic
 	- python manage.py migrate
+- Resources:
+	- https://rapidapi.com/community/api/urban-dictionary
+	- https://whitenoise.evans.io/en/stable/
